@@ -16,11 +16,11 @@ const OptionComponent = ({ changeCategoryOnClick }) => {
     <div className="category-contrainer">
       {categories.map((category, index) => {
         return (
-            <Stack spacing={2} direction="row">
+            <Stack spacing={2} direction="row" key={index}>
               <Button
               className="category-button"
                 variant="contained"
-                key={index}
+                
                 onClick={() => changeCategoryOnClick(category)}
               >
                 {category}

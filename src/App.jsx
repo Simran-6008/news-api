@@ -6,8 +6,8 @@ import OptionComponent from "./COMPONENTS/optionsComponent";
 import Header from "./COMPONENTS/Header";
 import PageOptionComponent from "./COMPONENTS/PageOptionComponent";
 import ShortBy from "./COMPONENTS/ShortBy";
-// import Backdrop from '@mui/material/Backdrop';
-// import CircularProgress from '@mui/material/CircularProgress';
+import Backdrop from "@mui/material/Backdrop";
+import CircularProgress from "@mui/material/CircularProgress";
 
 export const LanguageContext = createContext("en");
 const App = () => {
@@ -21,15 +21,18 @@ const App = () => {
 
   function selectShotBy(event) {
     //console.log(event.target.value);
-    setSortBy(event.target.value)
+    setShowLoader(true);
+    setSortBy(event.target.value);
   }
 
   function changeCategoryOnClick(category) {
     //console.log(category)
+    setShowLoader(true);
     setShowCategory(category);
   }
 
   function changeLanguage() {
+    setShowLoader(true);
     if (language === "en") {
       // setLanguage(false);
       setLanguage("es");
@@ -39,8 +42,9 @@ const App = () => {
   }
 
   function handlePageChange(event, value) {
-    setPage(value);
     window.scrollTo(0, 0);
+    setShowLoader(true);
+    setPage(value);
   }
 
   useEffect(() => {
@@ -51,22 +55,26 @@ const App = () => {
         // console.log(response);
         return response.json();
       })
-      .then((data) =>{
-        //setShowLoader(false);
+      .then((data) => {
+        setShowLoader(false);
         //console.log(data)
         return setNewsList(data.articles);
-      })
+      });
   }, [language, showCategory, page, sortBy]);
 
   return (
     <div className="main-container">
-      {/* <Backdrop
-        sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
-        open={open}
-      >
-        <CircularProgress color="inherit" />
-      </Backdrop> */}
       <LanguageContext.Provider value={language}>
+        {showLoader ? (
+          <Backdrop
+            sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+            open={showLoader}
+          >
+            <CircularProgress color="inherit" />
+          </Backdrop>
+        ) : (
+          ""
+        )}
         <Header changeLanguage={changeLanguage} />
         {/* <Typography variant="h1">See latest news</Typography> */}
         <OptionComponent changeCategoryOnClick={changeCategoryOnClick} />

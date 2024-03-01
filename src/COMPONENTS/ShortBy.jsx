@@ -9,8 +9,8 @@ const ShortBy = ({ selectShotBy, shortBy }) => {
     <div className="sort-container">
       <Box sx={{ minWidth: 30 }}>
         <FormControl>
-          <InputLabel variant="standard" htmlFor="uncontrolled-native">
-            ShortBy
+          <InputLabel variant="standard">
+            Sort: 
           </InputLabel>
           <NativeSelect value={shortBy} onChange={selectShotBy}>
             <option value={"publishedAt"}>Latest</option>
