@@ -1,0 +1,23 @@
+.category-contrainer{
+    display: flex;
+    flex-direction: column-reverse;
+    margin: 10px;
+}
+.category-button{
+    width: 100%;
+    max-height: 10px;
+    margin-bottom: 5px;
+    border: 0.5px solid black;
+}
+
+@media (min-width:756px) {
+    .category-button{
+        min-height: 30px;
+    }
+    .category-contrainer{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin: 10px;
+    }
+}
