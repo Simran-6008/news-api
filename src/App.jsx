@@ -2,7 +2,7 @@ import Grid from "@mui/material/Grid";
 import CardComponent from "./COMPONENTS/CardComponent";
 import "./CSS/App.css";
 import { createContext, useEffect, useState } from "react";
-import OptionComponent from "./COMPONENTS/optionsComponent";
+import OptionComponent from "./COMPONENTS/OptionsComponent";
 import Header from "./COMPONENTS/Header";
 import PageOptionComponent from "./COMPONENTS/PageOptionComponent";
 import ShortBy from "./COMPONENTS/ShortBy";
